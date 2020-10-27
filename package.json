@@ -39,5 +39,10 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/bahmutov/cy-search.git"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ]
   }
 }
