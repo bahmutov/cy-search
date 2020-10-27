@@ -1,7 +1,7 @@
 const open = require('open')
 const chalk = require('chalk')
 const prompts = require('prompts')
-const {initSearch} = require('./search')
+const { initSearch } = require('./src/search')
 
 const search = initSearch()
 
@@ -18,11 +18,13 @@ const getHighlightText = (hit) => {
   }
   // lower level, more precise match wins
   const h = hit._highlightResult.hierarchy
-  return (h.lvl4 && h.lvl4.value) ||
+  return (
+    (h.lvl4 && h.lvl4.value) ||
     (h.lvl3 && h.lvl3.value) ||
     (h.lvl2 && h.lvl2.value) ||
     (h.lvl1 && h.lvl1.value) ||
     (h.lvl0 && h.lvl0.value)
+  )
 }
 
 const getHighlight = (hit) => {
@@ -40,14 +42,13 @@ const getHighlight = (hit) => {
   // Go to  >>>ab<<<out page
   // and outputs "Go to  " + chalk.yellow(ab) + "out page"
   // note: we send these custom pre and post tags when doing the search
-  return value.replace(/>>>(.+)<<</g,
-    (match, text) => {
-      // we might have several highlights, and the group above
-      // grabs the outer one. So let's make sure the inside does not
-      // have >>> or <<< tags
-      text = text.replace(/>>>/g, '').replace(/<<</g, '')
-      return chalk.yellow(text)
-    })
+  return value.replace(/>>>(.+)<<</g, (match, text) => {
+    // we might have several highlights, and the group above
+    // grabs the outer one. So let's make sure the inside does not
+    // have >>> or <<< tags
+    text = text.replace(/>>>/g, '').replace(/<<</g, '')
+    return chalk.yellow(text)
+  })
 }
 
 const options = {
@@ -55,7 +56,7 @@ const options = {
   name: 'value',
   message: 'cy 🔎',
   choices: [],
-  suggest (input, choices) {
+  suggest(input, choices) {
     choices.length = 0
     if (!input.length) {
       return Promise.resolve([])
@@ -66,22 +67,22 @@ const options = {
         return []
       }
 
-      return results.hits.map(hit => {
+      return results.hits.map((hit) => {
         choices.push({
-          title: hit.url
+          title: hit.url,
         })
         const highlight = getHighlight(hit)
         const title = highlight ? hit.url + ' ' + highlight : hit.url
         return {
           title,
-          value: hit.url
+          value: hit.url,
         }
       })
     })
-  }
+  },
 }
 const ask = async () => {
-  const response = await prompts(options);
+  const response = await prompts(options)
 
   if (!response) {
     return

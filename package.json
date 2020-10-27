@@ -1,20 +1,21 @@
 {
-  "name": "cy-searcher",
+  "name": "cy-search",
   "version": "1.0.0",
-  "description": "",
+  "description": "Search Cypress documentation from the terminal",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["cypress", "documentation", "search", "terminal", "cli"],
+  "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
+  "license": "MIT",
   "dependencies": {
     "algoliasearch": "4.1.0",
     "chalk": "3.0.0",
     "prompts": "2.3.2"
   },
   "devDependencies": {
-    "open": "7.0.3"
+    "open": "7.0.3",
+    "prettier": "2.1.2"
   }
 }

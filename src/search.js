@@ -5,7 +5,7 @@ const doSearch = async ({ appId, apiKey, indexName }, query) => {
     // use custom highlight tags we can easily find later on
     highlightPreTag: '>>>',
     highlightPostTag: '<<<',
-    hitsPerPage: 12
+    hitsPerPage: 12,
   }
 
   const client = algolia(appId, apiKey)
@@ -23,19 +23,14 @@ const initSearch = () => {
   const clientOptions = {
     appId,
     apiKey,
-    indexName
+    indexName,
   }
 
-  return function searchByQuery (query) {
+  return function searchByQuery(query) {
     return doSearch(clientOptions, query)
   }
 }
 
 module.exports = {
-  initSearch
+  initSearch,
 }
-
-// search(options).catch((err) => {
-//   console.error(err)
-//   process.exit(1)
-// })
