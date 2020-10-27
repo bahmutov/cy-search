@@ -10,6 +10,7 @@ require('dotenv').config({
 const open = require('open')
 const chalk = require('chalk')
 const prompts = require('prompts')
+const startCase = require('lodash/startCase')
 const { initSearch } = require('../src/search')
 
 const search = initSearch()
@@ -63,7 +64,7 @@ const getHighlight = (hit) => {
 const options = {
   type: 'autocomplete',
   name: 'value',
-  message: 'cy 🔎',
+  message: '🔍 Search Cypress Docs',
   choices: [],
   suggest(input, choices) {
     choices.length = 0
@@ -81,10 +82,12 @@ const options = {
           title: hit.url,
         })
         const highlight = getHighlight(hit)
-        const title = highlight ? hit.url + ' ' + highlight : hit.url
+        const url = new URL(hit.url)
+        const title = highlight ? highlight : startCase(url.hash)
         return {
           title,
           value: hit.url,
+          description: url.pathname
         }
       })
     })
