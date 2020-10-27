@@ -1,7 +1,11 @@
+#!/usr/bin/env node
+
+// @ts-check
+
 const open = require('open')
 const chalk = require('chalk')
 const prompts = require('prompts')
-const { initSearch } = require('./src/search')
+const { initSearch } = require('../src/search')
 
 const search = initSearch()
 

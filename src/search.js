@@ -1,3 +1,5 @@
+// @ts-check
+
 const algolia = require('algoliasearch')
 
 const doSearch = async ({ appId, apiKey, indexName }, query) => {

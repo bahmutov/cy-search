@@ -2,7 +2,14 @@
   "name": "cy-search",
   "version": "1.0.0",
   "description": "Search Cypress documentation from the terminal",
-  "main": "index.js",
+  "bin": {
+    "cy-search": "bin/index.js"
+  },
+  "main": "src/search.js",
+  "files": [
+    "bin",
+    "src"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
