@@ -2,6 +2,8 @@
 
 // @ts-check
 
+require('dotenv').config()
+
 const open = require('open')
 const chalk = require('chalk')
 const prompts = require('prompts')
