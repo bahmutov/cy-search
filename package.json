@@ -1,6 +1,6 @@
 {
   "name": "cy-search",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "Search Cypress documentation from the terminal",
   "bin": {
     "cy-search": "bin/index.js"
@@ -12,7 +12,8 @@
     ".env"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "semantic-release": "semantic-release"
   },
   "keywords": [
     "cypress",
@@ -32,6 +33,11 @@
   "devDependencies": {
     "@types/node": "14.14.5",
     "open": "7.0.3",
-    "prettier": "2.1.2"
+    "prettier": "2.1.2",
+    "semantic-release": "^17.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bahmutov/cy-search.git"
   }
 }
