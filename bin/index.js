@@ -10,7 +10,7 @@ require('dotenv').config({
 const open = require('open')
 const chalk = require('chalk')
 const prompts = require('prompts')
-const startCase = require('lodash/startCase')
+const startCase = require('lodash.startcase')
 const { initSearch } = require('../src/search')
 
 const search = initSearch()
@@ -87,7 +87,7 @@ const options = {
         return {
           title,
           value: hit.url,
-          description: url.pathname
+          description: url.pathname,
         }
       })
     })
