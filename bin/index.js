@@ -10,7 +10,6 @@ require('dotenv').config({
 const open = require('open')
 const chalk = require('chalk')
 const prompts = require('prompts')
-const startCase = require('lodash.startcase')
 const { initSearch } = require('../src/search')
 
 const search = initSearch()
@@ -61,6 +60,11 @@ const getHighlight = (hit) => {
   })
 }
 
+const getTitle = (hash) => {
+  const result = decodeURI(hash).replace(/-/g, ' ').replace(/#/, '')
+  return result
+}
+
 const options = {
   type: 'autocomplete',
   name: 'value',
@@ -83,10 +87,10 @@ const options = {
         })
         const highlight = getHighlight(hit)
         const url = new URL(hit.url)
-        const title = highlight ? highlight : startCase(url.hash)
+        const title = highlight ? highlight : getTitle(url.hash)
         return {
           title,
-          value: hit.url,
+          value: encodeURI(hit.url),
           description: url.pathname,
         }
       })
