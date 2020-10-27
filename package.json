@@ -29,7 +29,6 @@
     "algoliasearch": "4.1.0",
     "chalk": "3.0.0",
     "dotenv": "8.2.0",
-    "lodash.startcase": "4.4.0",
     "open": "7.0.3",
     "prompts": "2.3.2"
   },
