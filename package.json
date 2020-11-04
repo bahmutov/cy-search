@@ -30,7 +30,8 @@
     "chalk": "3.0.0",
     "dotenv": "8.2.0",
     "open": "7.0.3",
-    "prompts": "2.3.2"
+    "prompts": "2.3.2",
+    "update-notifier": "5.0.1"
   },
   "devDependencies": {
     "@types/node": "14.14.5",

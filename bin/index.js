@@ -3,9 +3,14 @@
 // @ts-check
 
 const path = require('path')
+
 require('dotenv').config({
   path: path.resolve(__dirname, '..', '.env'),
 })
+
+const updateNotifier = require('update-notifier')
+const pkg = require(path.join('..', 'package.json'))
+updateNotifier({ pkg }).notify()
 
 const open = require('open')
 const chalk = require('chalk')
