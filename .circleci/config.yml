@@ -1,19 +1,5 @@
 version: 2.1
-orbs:
-  cypress: cypress-io/cypress@1.29.0
-
 jobs:
-  example-job:
-    docker:
-      # replace with your preferred image
-      - image: cimg/base:stable
-    steps:
-      - cypress/write_workspace
-workflows:
-  example-workflow:
-    jobs:
-      - example-job
-example-jobs:
   build:
     docker:
       # the Docker image with Cypress dependencies
