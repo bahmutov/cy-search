@@ -17,23 +17,24 @@ jobs:
             - v2-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
             - v2-deps-{{ .Branch }}-
             - v2-deps-
-      - run:
-          name: Running E2E tests with JUnit reporter
-          command: npm run test-junit
-      - store_test_results:
-          path: junit-results
-      - run:
-          name: Running E2E tests with multiple reporters
-          command: npm run test-multiple
       - run: npm ci
       - save_cache:
           key: v2-deps-{{ .Branch }}-{{ checksum "package-lock.json" }}
           paths:
             - ~/.npm
             - ~/.cache
+      - run:
+          name: Running E2E tests with JUnit reporter
+          command: npm ci run test-junit
+      - store_test_results:
+          path: junit-results
+      - run:
+          name: Running E2E tests with multiple reporters
+          command: npm ci run test-multiple
       - store_test_results:
           path: multiple-results
       - store_artifacts:
           path: cypress/videos
       - store_artifacts:
           path: cypress/screenshots
+
